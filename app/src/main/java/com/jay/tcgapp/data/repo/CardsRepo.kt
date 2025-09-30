@@ -6,6 +6,10 @@ class CardsRepo private constructor() {
     private val cards = mutableMapOf<Int, Card>()
     private var counter = 0
 
+    init {
+        generateRandomCard(5)
+    }
+
     fun addCard(card: Card) {
         counter++
         val newCard = card.copy(id = counter)
@@ -16,7 +20,8 @@ class CardsRepo private constructor() {
         return cards[id]
     }
 
-    fun getAllCards() = cards.values.toList()
+    fun getAllCards(): List<Card> = cards.values.toList()
+    fun getAllCollectedCards(): List<Card> = cards.values.filter { it.collected }
 
     fun deleteCard(id: Int) {
         cards.remove(id)
@@ -24,6 +29,15 @@ class CardsRepo private constructor() {
 
     fun updateCard(id: Int, card: Card) {
         cards[id] = card
+    }
+
+    fun generateRandomCard(n: Int) {
+        repeat(n) { i ->
+            cards[counter++] = Card(
+                title = "Pokemon $i",
+                price = (1..100).random().toDouble(),
+            )
+        }
     }
 
     companion object {

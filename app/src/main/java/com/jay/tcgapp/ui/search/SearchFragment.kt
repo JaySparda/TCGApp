@@ -1,4 +1,4 @@
-package com.jay.tcgapp.ui.home
+package com.jay.tcgapp.ui.search
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -7,32 +7,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.jay.tcgapp.R
-import com.jay.tcgapp.databinding.FragmentHomeBinding
+import com.jay.tcgapp.databinding.FragmentSearchBinding
 import com.jay.tcgapp.ui.adapter.CardAdapter
 import kotlinx.coroutines.launch
 
-class HomeFragment : Fragment() {
-    private lateinit var binding: FragmentHomeBinding
-    private val viewModel: HomeViewModel by viewModels()
+class SearchFragment : Fragment() {
+
+    private lateinit var binding: FragmentSearchBinding
+    private val viewModel: SearchViewModel by viewModels()
     private lateinit var adapter: CardAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = CardAdapter(emptyList()) { TODO() }
-
-        binding.rvCards.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvCards.adapter = adapter
+        setupAdapter()
 
         lifecycleScope.launch {
             viewModel.cards.collect {
@@ -41,10 +38,14 @@ class HomeFragment : Fragment() {
             }
         }
 
-        binding.btnSearch.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment2()
-            findNavController().navigate(action)
+        binding.fabAdd.setOnClickListener {
+            TODO()
         }
     }
 
+    fun setupAdapter() {
+        adapter = CardAdapter(emptyList()) {TODO()}
+        binding.rvCards.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvCards.adapter = adapter
+    }
 }
