@@ -6,7 +6,7 @@ data class Card (
     val id: Int = 0,
     val title: String,
     val price: Double,
-    val cardImageUri: Uri? = null,
+    val cardImageUri: String = "",
     val category: Category = Category.NONE,
     val rarity: Rarity = Rarity.COMMON
 )

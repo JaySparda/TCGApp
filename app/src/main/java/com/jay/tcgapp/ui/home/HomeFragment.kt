@@ -6,26 +6,44 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jay.tcgapp.R
+import com.jay.tcgapp.databinding.FragmentHomeBinding
+import com.jay.tcgapp.ui.adapter.CardAdapter
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
-
+    private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
+    private lateinit var adapter: CardAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupAdapter()
+
+        lifecycleScope.launch {
+            viewModel.cards.collect {
+                adapter.setCards(it)
+                binding.llEmpty.visibility = if (it.isEmpty()) View.VISIBLE else View.GONE
+            }
+        }
+
+        binding.btnSearch.setOnClickListener {
+        }
+    }
+
+    fun setupAdapter() {
+        binding.rvCards.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvCards.adapter = adapter
     }
 }
