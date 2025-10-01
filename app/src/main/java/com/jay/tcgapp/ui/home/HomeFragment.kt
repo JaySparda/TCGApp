@@ -29,10 +29,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = CardAdapter(emptyList()) { TODO() }
-
-        binding.rvCards.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvCards.adapter = adapter
+        setupAdapter()
 
         lifecycleScope.launch {
             viewModel.cards.collect {
@@ -45,6 +42,16 @@ class HomeFragment : Fragment() {
             val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment2()
             findNavController().navigate(action)
         }
+    }
+
+    fun setupAdapter() {
+        adapter = CardAdapter(emptyList()) {
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(it.id)
+            findNavController().navigate(action)
+        }
+
+        binding.rvCards.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvCards.adapter = adapter
     }
 
 }

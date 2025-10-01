@@ -1,0 +1,56 @@
+package com.jay.tcgapp.ui.detail
+
+import android.net.Uri
+import androidx.fragment.app.viewModels
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.jay.tcgapp.R
+import com.jay.tcgapp.databinding.FragmentDetailBinding
+import kotlinx.coroutines.launch
+import androidx.core.net.toUri
+
+class DetailFragment : Fragment() {
+
+    private val viewModel: DetailViewModel by viewModels()
+    private lateinit var binding: FragmentDetailBinding
+    private val args: DetailFragmentArgs by navArgs()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentDetailBinding.inflate(
+            inflater,
+            container,
+            false
+        )
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val card = viewModel.getCardById(args.cardId)
+        if(card == null) {
+            findNavController().popBackStack()
+            return
+        }
+
+        binding.run {
+            if(card.cardImageUri.isNotEmpty()) {
+                ivCard.setImageURI(card.cardImageUri.toUri())
+            } else {
+                ivCard.setImageResource(R.drawable.giratina)
+            }
+            tvTitle.setText(card.title)
+            tvPrice.setText(card.price.toString())
+            tvCategory.setText(card.category.ordinal)
+            tvRarity.setText(card.rarity.ordinal)
+        }
+    }
+}

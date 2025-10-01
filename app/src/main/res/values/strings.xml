@@ -9,4 +9,8 @@
     <string name="rarity">Rarity:</string>
     <string name="add">Add</string>
     <string name="update">Update</string>
+    <string name="dot">.</string>
+    <string name="rarity2">Rarity</string>
+    <string name="category2">Category</string>
+    <string name="delete">Delete</string>
 </resources>

@@ -23,8 +23,8 @@
 
         <ImageView
             android:id="@+id/ivCard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="180dp"
             android:src="@drawable/giratina"
             android:layout_weight="3"
             android:layout_gravity="start" />
@@ -98,12 +98,55 @@
         android:layout_marginTop="8dp"
         android:popupBackground="@drawable/spinner_dropdown_bg"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/mbAdd"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/llAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp"
+        android:weightSum="3">
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add"
+            app:cornerRadius="10dp"
+            android:layout_weight="1"/>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBtn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/add" />
+        android:padding="10dp"
+        android:weightSum="2">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cornerRadius="10dp"
+            android:layout_margin="10dp"
+            android:text="@string/update" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cornerRadius="10dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="@string/delete" />
+    </LinearLayout>
+
 
 
 </LinearLayout>

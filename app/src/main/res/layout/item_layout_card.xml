@@ -17,9 +17,9 @@
         <ImageView
             android:id="@+id/ivCard"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="180dp"
             android:layout_gravity="center"
-            android:scaleType="center"
+            android:scaleType="fitCenter"
             android:src="@drawable/giratina"
             android:padding="8dp"/>
 
@@ -27,19 +27,19 @@
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:text="Title"/>
+            android:text="@string/title2"/>
         <TextView
             android:id="@+id/tvCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Category"/>
+            android:text="@string/category2"/>
         <TextView
             android:id="@+id/tvRarity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rarity"/>
+            android:text="@string/rarity2"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,11 +48,11 @@
 
             <TextView
                 android:id="@+id/tvPrice"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="16dp"
-                android:text="Price"
+                android:text="@string/price2"
                 android:textSize="20sp"/>
 
             <ImageButton
