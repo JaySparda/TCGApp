@@ -27,8 +27,8 @@ class CardsRepo private constructor() {
         cards.remove(id)
     }
 
-    fun updateCard(id: Int, card: Card) {
-        cards[id] = card
+    fun updateCard(card: Card) {
+        cards[card.id] = card
     }
 
     fun generateRandomCard(n: Int) {

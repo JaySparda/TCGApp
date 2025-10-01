@@ -30,10 +30,24 @@
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right"/>
+        <action
+            android:id="@+id/action_searchFragment2_to_editFragment"
+            app:destination="@id/editFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
     </fragment>
     <fragment
         android:id="@+id/addCardFragment"
         android:name="com.jay.tcgapp.ui.manage.AddCardFragment"
         android:label="fragment_manage_card"
         tools:layout="@layout/fragment_manage_card" />
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.jay.tcgapp.ui.manage.EditCardFragment"
+        android:label="EditFragment"
+        tools:layout="@layout/fragment_manage_card">
+        <argument android:name="card_id" app:argType="integer" />
+    </fragment>
 </navigation>
