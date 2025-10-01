@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jay.tcgapp.R
 import com.jay.tcgapp.databinding.FragmentSearchBinding
@@ -39,7 +40,8 @@ class SearchFragment : Fragment() {
         }
 
         binding.fabAdd.setOnClickListener {
-            TODO()
+            val action = SearchFragmentDirections.actionSearchFragment2ToAddCardFragment()
+            findNavController().navigate(action)
         }
     }
 

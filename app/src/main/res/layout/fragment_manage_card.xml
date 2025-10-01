@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp"
+    tools:context=".ui.manage.AddCardFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/image_here"
+        style="@style/TextAppearance.Material3.TitleSmall"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ivCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/giratina"
+            android:layout_weight="3"
+            android:layout_gravity="start" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbImg"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            app:cornerRadius="8dp"
+            app:icon="@drawable/ic_add"
+            android:text="Add Image here"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        style="@style/TextAppearance.Material3.TitleSmall" />
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:maxLines="1"
+        android:background="@drawable/edit_text_bg"
+        android:hint="@string/title2"
+        android:padding="12dp"
+        android:layout_marginTop="8dp"
+        style="@style/TextAppearance.Material3.TitleLarge"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/price"
+        style="@style/TextAppearance.Material3.TitleSmall" />
+    <EditText
+        android:id="@+id/etPrice"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:maxLines="1"
+        android:background="@drawable/edit_text_bg"
+        android:hint="@string/price2"
+        android:padding="12dp"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="8dp"
+        style="@style/TextAppearance.Material3.TitleLarge"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/category"
+        style="@style/TextAppearance.Material3.TitleSmall" />
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/spinner_bg"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        android:popupBackground="@drawable/spinner_dropdown_bg"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/rarity"
+        style="@style/TextAppearance.Material3.TitleSmall" />
+    <Spinner
+        android:id="@+id/raritySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/spinner_bg"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        android:popupBackground="@drawable/spinner_dropdown_bg"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/add" />
+
+
+</LinearLayout>
