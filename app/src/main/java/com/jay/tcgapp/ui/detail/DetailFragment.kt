@@ -1,18 +1,15 @@
 package com.jay.tcgapp.ui.detail
 
-import android.net.Uri
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.jay.tcgapp.R
 import com.jay.tcgapp.databinding.FragmentDetailBinding
-import kotlinx.coroutines.launch
 import androidx.core.net.toUri
 import androidx.fragment.app.setFragmentResult
 

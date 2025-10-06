@@ -2,7 +2,6 @@ package com.jay.tcgapp.ui.manage
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.material.snackbar.Snackbar
 import com.jay.tcgapp.data.model.Card
 import com.jay.tcgapp.data.repo.CardsRepo
 import kotlinx.coroutines.flow.MutableSharedFlow

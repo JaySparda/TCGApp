@@ -1,6 +1,5 @@
 package com.jay.tcgapp.ui.manage
 
-import android.net.Uri
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment

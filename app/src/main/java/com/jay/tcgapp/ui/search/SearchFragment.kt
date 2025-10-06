@@ -11,7 +11,6 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.jay.tcgapp.R
 import com.jay.tcgapp.databinding.FragmentSearchBinding
 import com.jay.tcgapp.ui.adapter.CardAdapter
 import kotlinx.coroutines.launch

@@ -11,6 +11,7 @@
         android:id="@+id/ivCard"
         android:layout_width="match_parent"
         android:layout_height="280dp"
+        android:contentDescription="@string/todo"
         android:scaleType="fitCenter"
         android:src="@drawable/giratinaex"/>
     <LinearLayout
