@@ -24,6 +24,8 @@ class EditCardViewModel(
     )
 
     val card = _card.asStateFlow()
+    private val _error = MutableSharedFlow<String>()
+    val error = _error.asSharedFlow()
 
     fun getCard(id: Int) {
         repo.getCardById(id)?.let {
@@ -32,11 +34,19 @@ class EditCardViewModel(
     }
 
     fun updateCard(title: String, price: Double, imageUri: String, category: Category, rarity: Rarity) {
-        repo.updateCard(card.value.copy(title = title, price = price, cardImageUri = imageUri,
-            category = category, rarity = rarity)
-        )
-        viewModelScope.launch {
-            _finish.emit(Unit)
+        try {
+            repo.updateCard(card.value.copy(title = title, price = price, cardImageUri = imageUri,
+                category = category, rarity = rarity)
+            )
+            viewModelScope.launch {
+                _finish.emit(Unit)
+            }
+        } catch (e: Exception) {
+            viewModelScope.launch {
+                _error.emit("Failed to update card: ${e.message}")
+            }
         }
     }
+
+    fun deleteCard(id: Int) = repo.deleteCard(id)
 }
