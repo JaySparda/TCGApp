@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvCard"
+    android:layout_width="190dp"
+    android:layout_height="320dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivCard"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/todo"
+            android:scaleType="fitCenter"
+            android:src="@drawable/giratinaex"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/title2"/>
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/category2"/>
+        <TextView
+            android:id="@+id/tvRarity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rarity2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="16dp"
+                android:text="@string/price2"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
