@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -43,6 +44,10 @@ class HomeFragment : Fragment() {
         binding.btnSearch.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment2()
             findNavController().navigate(action)
+        }
+
+        binding.etSearch.addTextChangedListener{ text ->
+            viewModel.setSearchText(text?.toString().orEmpty())
         }
 
         setFragmentResultListener("manage_card") { _, _ ->

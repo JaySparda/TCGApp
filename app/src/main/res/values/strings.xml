@@ -18,4 +18,5 @@
     <string name="add_to_collection">Add to Collection</string>
     <string name="edit">Edit</string>
     <string name="remove_from_collection">Remove from collection</string>
+    <string name="search_card">Search Card</string>
 </resources>

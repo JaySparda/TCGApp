@@ -13,11 +13,14 @@ class HomeViewModel(
     private val _cards = MutableStateFlow<List<Card>>(emptyList())
     val cards: StateFlow<List<Card>> = _cards
 
-    init {
+    private var searchText: String = ""
+
+    fun setSearchText(text: String) {
+        searchText = text
         getCards()
     }
 
     fun getCards() {
-        _cards.value = repo.getAllCollectedCards()
+        _cards.value = repo.getFilteredCollectedCard(searchText)
     }
 }

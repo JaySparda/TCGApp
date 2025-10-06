@@ -32,6 +32,26 @@ class CardsRepo private constructor() {
         cards[id] = card.copy(collected = collect)
     }
 
+    private fun filterSearch(list: List<Card>, searchText: String): List<Card> {
+        if(searchText.isBlank()) return list
+        val text = searchText.lowercase()
+        return list.filter {
+            it.title.lowercase().contains(text)
+        }
+    }
+
+    fun getFilteredCards(searchText: String): List<Card> {
+        var result = getAllCards()
+        result = filterSearch(result, searchText)
+        return result
+    }
+
+    fun getFilteredCollectedCard(searchText: String): List<Card> {
+        var result = getAllCollectedCards()
+        result = filterSearch(result, searchText)
+        return result
+    }
+
     companion object {
         private var instance: CardsRepo? = null
 

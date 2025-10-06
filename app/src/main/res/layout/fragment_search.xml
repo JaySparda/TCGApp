@@ -11,6 +11,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingTop="20dp">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_search"
+                android:background="@drawable/edit_text_bg"
+                android:hint="@string/search_card"
+                android:padding="8dp"/>
+        </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
