@@ -2,6 +2,7 @@ package com.jay.tcgapp.ui.manage
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.material.snackbar.Snackbar
 import com.jay.tcgapp.data.model.Card
 import com.jay.tcgapp.data.repo.CardsRepo
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -15,10 +16,18 @@ class AddCardViewModel(
 
     val finish = _finish.asSharedFlow()
 
+    private val _error = MutableSharedFlow<String>()
+    val error = _error.asSharedFlow()
     fun addCard(card: Card) {
-        repo.addCard(card)
-        viewModelScope.launch {
-            _finish.emit(Unit)
+        try {
+            repo.addCard(card)
+            viewModelScope.launch {
+                _finish.emit(Unit)
+            }
+        } catch (e: Exception) {
+            viewModelScope.launch {
+                _error.emit("Failed to add card: ${e.message}")
+            }
         }
     }
 }

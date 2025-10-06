@@ -1,7 +1,5 @@
 package com.jay.tcgapp.data.model
 
-import android.net.Uri
-
 data class Card (
     val id: Int = 0,
     val title: String,
@@ -12,10 +10,20 @@ data class Card (
     val collected: Boolean = false
 )
 
-enum class Category{
-    NONE, BLACKBOLT, WHITEFLARE
+enum class Category(val cat: String)
+{
+    NONE("None"),
+    BLACKBOLT("Black Bolt"),
+    WHITEFLARE("White Flare");
+
+    override fun toString(): String = cat
 }
 
-enum class Rarity{
-    COMMON, UNCOMMON, RARE
+enum class Rarity(val rarity: String)
+{
+    COMMON("Common"),
+    UNCOMMON("Uncommon"),
+    RARE("Rare");
+
+    override fun toString(): String = rarity
 }

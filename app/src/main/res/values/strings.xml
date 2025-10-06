@@ -13,4 +13,6 @@
     <string name="rarity2">Rarity</string>
     <string name="category2">Category</string>
     <string name="delete">Delete</string>
+    <string name="add_image_here">Add Image here</string>
+    <string name="change_image">Change Image</string>
 </resources>

@@ -3,11 +3,11 @@ package com.jay.tcgapp.data.repo
 import com.jay.tcgapp.data.model.Card
 
 class CardsRepo private constructor() {
-    private val cards = mutableMapOf<Int, Card>()
+    private val cards: MutableMap<Int, Card> = mutableMapOf()
     private var counter = 0
 
     init {
-        generateRandomCard(5)
+        generateRandomCollectedCard(3)
     }
 
     fun addCard(card: Card) {
@@ -20,7 +20,7 @@ class CardsRepo private constructor() {
         return cards[id]
     }
 
-    fun getAllCards(): List<Card> = cards.values.toList()
+    fun getAllCards(): List<Card> = cards.values.filter { !it.collected }
     fun getAllCollectedCards(): List<Card> = cards.values.filter { it.collected }
 
     fun deleteCard(id: Int) {
@@ -31,11 +31,13 @@ class CardsRepo private constructor() {
         cards[card.id] = card
     }
 
-    fun generateRandomCard(n: Int) {
+
+    fun generateRandomCollectedCard(n: Int) {
         repeat(n) { i ->
             cards[counter++] = Card(
                 title = "Pokemon $i",
                 price = (1..100).random().toDouble(),
+                collected = true
             )
         }
     }

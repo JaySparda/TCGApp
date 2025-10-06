@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jay.tcgapp.R
 import com.jay.tcgapp.databinding.FragmentHomeBinding
@@ -50,7 +51,7 @@ class HomeFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        binding.rvCards.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvCards.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvCards.adapter = adapter
     }
 

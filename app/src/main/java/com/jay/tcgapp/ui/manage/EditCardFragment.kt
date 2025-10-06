@@ -54,10 +54,11 @@ class EditCardFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.card.collect {
                 binding.run {
+                    llAdd.visibility = View.GONE
                     it.cardImageUri.takeIf { uri -> uri.isNotEmpty() }?.let { uriString ->
                         ivCard.setImageURI(uriString.toUri())
                     } ?: run {
-                        ivCard.setImageResource(R.drawable.giratina)
+                        ivCard.setImageResource(R.drawable.giratinaex)
                     }
                     etTitle.setText(it.title)
                     etPrice.setText(it.price.toString())

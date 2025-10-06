@@ -45,12 +45,12 @@ class DetailFragment : Fragment() {
             if(card.cardImageUri.isNotEmpty()) {
                 ivCard.setImageURI(card.cardImageUri.toUri())
             } else {
-                ivCard.setImageResource(R.drawable.giratina)
+                ivCard.setImageResource(R.drawable.giratinaex)
             }
-            tvTitle.setText(card.title)
-            tvPrice.setText(card.price.toString())
-            tvCategory.setText(card.category.ordinal)
-            tvRarity.setText(card.rarity.ordinal)
+            tvTitle.text = card.title
+            tvPrice.text = card.price.toString()
+            tvCategory.text = card.category.name
+            tvRarity.text = card.rarity.name
         }
     }
 }
