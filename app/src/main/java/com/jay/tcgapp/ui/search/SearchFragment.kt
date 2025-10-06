@@ -52,10 +52,15 @@ class SearchFragment : Fragment() {
 
     fun setupAdapter() {
         adapter = CardAdapter(emptyList()) {
-            val action = SearchFragmentDirections.actionSearchFragment2ToEditFragment(it.id)
+            val action = SearchFragmentDirections.actionSearchFragment2ToDetailFragment(it.id)
             findNavController().navigate(action)
         }
         binding.rvCards.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvCards.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getCards()
     }
 }

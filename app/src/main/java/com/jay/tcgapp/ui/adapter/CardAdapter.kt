@@ -2,8 +2,11 @@ package com.jay.tcgapp.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.jay.tcgapp.R
 import com.jay.tcgapp.data.model.Card
+import com.jay.tcgapp.data.repo.CardsRepo
 import com.jay.tcgapp.databinding.ItemLayoutCardBinding
 
 class CardAdapter(
@@ -38,6 +41,11 @@ class CardAdapter(
             binding.tvCategory.text = card.category.toString()
             binding.tvRarity.text = card.rarity.toString()
             binding.root.setOnClickListener { onCardClick(card) }
+            if(card.cardImageUri.isNotEmpty()) {
+                binding.ivCard.setImageURI(card.cardImageUri.toUri())
+            } else {
+                binding.ivCard.setImageResource(R.drawable.giratinaex)
+            }
         }
     }
 }

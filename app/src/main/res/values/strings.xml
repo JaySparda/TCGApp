@@ -15,4 +15,7 @@
     <string name="delete">Delete</string>
     <string name="add_image_here">Add Image here</string>
     <string name="change_image">Change Image</string>
+    <string name="add_to_collection">Add to Collection</string>
+    <string name="edit">Edit</string>
+    <string name="remove_from_collection">Remove from collection</string>
 </resources>

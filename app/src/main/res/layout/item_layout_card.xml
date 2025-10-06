@@ -55,14 +55,6 @@
                 android:text="@string/price2"
                 android:textSize="20sp"/>
 
-            <ImageButton
-                android:id="@+id/ibAdd"
-                android:layout_width="46dp"
-                android:layout_height="46dp"
-                android:elevation="8dp"
-                android:src="@drawable/ic_add"
-                />
-
         </LinearLayout>
 
 

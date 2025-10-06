@@ -14,6 +14,7 @@ import com.jay.tcgapp.R
 import com.jay.tcgapp.databinding.FragmentDetailBinding
 import kotlinx.coroutines.launch
 import androidx.core.net.toUri
+import androidx.fragment.app.setFragmentResult
 
 class DetailFragment : Fragment() {
 
@@ -51,6 +52,24 @@ class DetailFragment : Fragment() {
             tvPrice.text = card.price.toString()
             tvCategory.text = card.category.name
             tvRarity.text = card.rarity.name
+            mbCollect.text =
+                if(card.collected) getString(R.string.remove_from_collection)
+                else getString(R.string.add_to_collection)
+
+            mbCollect.setOnClickListener {
+                val isCollected = viewModel.getCardById(card.id)?.collected == true
+                if(isCollected) {
+                    viewModel.markCollected(card.id, collected = false)
+                } else {
+                    viewModel.markCollected(card.id)
+                }
+                setFragmentResult("manage_card", Bundle().apply { putBoolean("refresh", true) })
+                findNavController().popBackStack()
+            }
+            mbEdit.setOnClickListener {
+                val action = DetailFragmentDirections.actionDetailFragmentToEditFragment(card.id)
+                findNavController().navigate(action)
+            }
         }
     }
 }

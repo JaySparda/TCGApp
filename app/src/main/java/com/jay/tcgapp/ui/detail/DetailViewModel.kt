@@ -8,4 +8,7 @@ class DetailViewModel(
 ) : ViewModel() {
 
     fun getCardById(id: Int) = repo.getCardById(id)
+
+    fun markCollected(id: Int, collected: Boolean = true) =
+        repo.collectedCard(id, collected)
 }

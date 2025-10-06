@@ -60,4 +60,9 @@ class HomeFragment : Fragment() {
         binding.rvCards.adapter = adapter
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getCards()
+    }
+
 }

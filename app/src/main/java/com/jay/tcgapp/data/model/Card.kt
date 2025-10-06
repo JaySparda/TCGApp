@@ -7,7 +7,7 @@ data class Card (
     val cardImageUri: String = "",
     val category: Category = Category.NONE,
     val rarity: Rarity = Rarity.COMMON,
-    val collected: Boolean = false
+    var collected: Boolean = false
 )
 
 enum class Category(val cat: String)

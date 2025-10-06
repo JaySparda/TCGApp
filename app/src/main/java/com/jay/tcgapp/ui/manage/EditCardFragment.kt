@@ -104,23 +104,27 @@ class EditCardFragment : Fragment() {
                 openGallery()
             }
 
+            mbImg.text = getString(R.string.change_image)
+
             mbUpdate.setOnClickListener {
                 val title = etTitle.text.toString()
-                val imageUri = mbImg.text.toString()
+                val imageUri = selectedImageUri.ifEmpty {
+                    viewModel.card.value.cardImageUri
+                }
                 val priceText = binding.etPrice.text.toString()
 
                 when {
                     title.isEmpty() -> {
                         showError("Title cannot be empty")
-                    }
-                    imageUri.isEmpty() -> {
-                        showError("Please select an image")
+                        return@setOnClickListener
                     }
                     priceText.isEmpty() -> {
                         showError("Price cannot be empty")
+                        return@setOnClickListener
                     }
                     !isValidPrice(priceText) -> {
                         showError("Invalid price")
+                        return@setOnClickListener
                     }
                 }
 

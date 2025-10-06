@@ -6,10 +6,6 @@ class CardsRepo private constructor() {
     private val cards: MutableMap<Int, Card> = mutableMapOf()
     private var counter = 0
 
-    init {
-        generateRandomCollectedCard(3)
-    }
-
     fun addCard(card: Card) {
         counter++
         val newCard = card.copy(id = counter)
@@ -31,15 +27,9 @@ class CardsRepo private constructor() {
         cards[card.id] = card
     }
 
-
-    fun generateRandomCollectedCard(n: Int) {
-        repeat(n) { i ->
-            cards[counter++] = Card(
-                title = "Pokemon $i",
-                price = (1..100).random().toDouble(),
-                collected = true
-            )
-        }
+    fun collectedCard(id: Int, collect: Boolean = true) {
+        val card = cards[id] ?: return
+        cards[id] = card.copy(collected = collect)
     }
 
     companion object {
