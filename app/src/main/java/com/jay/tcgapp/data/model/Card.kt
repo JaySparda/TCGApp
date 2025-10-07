@@ -1,6 +1,11 @@
 package com.jay.tcgapp.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class Card (
+    @PrimaryKey(true)
     val id: Int = 0,
     val title: String,
     val price: Double,

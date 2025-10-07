@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
@@ -21,7 +20,9 @@ import com.jay.tcgapp.databinding.FragmentManageCardBinding
 import kotlinx.coroutines.launch
 
 class AddCardFragment : Fragment() {
-    private val viewModel: AddCardViewModel by viewModels()
+    private val viewModel: AddCardViewModel by viewModels{
+        AddCardViewModel.Factory
+    }
     private lateinit var binding: FragmentManageCardBinding
     private var selectedImageUri: String = ""
 
@@ -56,7 +57,6 @@ class AddCardFragment : Fragment() {
 
         lifecycleScope.launch {
             viewModel.finish.collect {
-                setFragmentResult("manage_card", Bundle())
                 findNavController().popBackStack()
             }
         }

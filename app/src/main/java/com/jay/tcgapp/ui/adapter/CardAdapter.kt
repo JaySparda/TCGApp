@@ -6,7 +6,6 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.jay.tcgapp.R
 import com.jay.tcgapp.data.model.Card
-import com.jay.tcgapp.data.repo.CardsRepo
 import com.jay.tcgapp.databinding.ItemLayoutCardBinding
 
 class CardAdapter(
