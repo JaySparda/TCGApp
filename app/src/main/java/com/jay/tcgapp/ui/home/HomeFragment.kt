@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,7 +16,9 @@ import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels{
+        HomeViewModel.Factory
+    }
     private lateinit var adapter: CardAdapter
 
     override fun onCreateView(
@@ -48,9 +49,6 @@ class HomeFragment : Fragment() {
             viewModel.setSearchText(text?.toString().orEmpty())
         }
 
-        setFragmentResultListener("manage_card") { _, _ ->
-            viewModel.getCards()
-        }
     }
 
     fun setupAdapter() {
@@ -61,11 +59,6 @@ class HomeFragment : Fragment() {
 
         binding.rvCards.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvCards.adapter = adapter
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.getCards()
     }
 
 }

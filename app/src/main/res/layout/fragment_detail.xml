@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/ivCard"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="@dimen/xxxxxxxxxl"
         android:contentDescription="@string/todo"
         android:scaleType="fitCenter"
         android:src="@drawable/giratinaex"/>
@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/tx_m"
                     android:text="@string/dot"/>
                 <TextView
                     android:id="@+id/tvRarity"
@@ -61,29 +61,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:padding="@dimen/xl"
         android:weightSum="2"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="32dp">
+        android:layout_marginTop="@dimen/xxxxl">
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mbCollect"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/xs"
         app:icon="@drawable/ic_add_box"
         android:text="@string/add_to_collection"
-        app:cornerRadius="10dp" />
+        app:cornerRadius="@dimen/s" />
         <com.google.android.material.button.MaterialButton
             android:id="@+id/mbEdit"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/xs"
             app:icon="@drawable/ic_edit"
             android:text="@string/edit"
-            app:cornerRadius="10dp" />
+            app:cornerRadius="@dimen/s" />
     </LinearLayout>
 
 
