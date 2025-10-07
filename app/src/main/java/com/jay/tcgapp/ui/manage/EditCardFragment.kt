@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -23,7 +22,9 @@ import androidx.core.net.toUri
 
 class EditCardFragment : Fragment() {
 
-    private val viewModel: EditCardViewModel by viewModels()
+    private val viewModel: EditCardViewModel by viewModels{
+        EditCardViewModel.Factory
+    }
 
     private lateinit var binding: FragmentManageCardBinding
 
@@ -64,7 +65,6 @@ class EditCardFragment : Fragment() {
 
         lifecycleScope.launch {
             viewModel.finish.collect {
-                setFragmentResult("manage_card", Bundle())
                 findNavController().popBackStack()
             }
         }
@@ -145,7 +145,6 @@ class EditCardFragment : Fragment() {
 
             mbDelete.setOnClickListener {
                 viewModel.deleteCard(args.cardId)
-                setFragmentResult("manage_card", Bundle())
                 findNavController().popBackStack()
             }
         }

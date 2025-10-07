@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="8dp"
+    android:padding="@dimen/xs"
     tools:context=".ui.manage.AddCardFragment">
 
     <TextView
@@ -23,8 +23,8 @@
 
         <ImageView
             android:id="@+id/ivCard"
-            android:layout_width="100dp"
-            android:layout_height="180dp"
+            android:layout_width="@dimen/xxxxxxl"
+            android:layout_height="@dimen/xxxxxxxl"
             android:contentDescription="@string/todo"
             android:src="@drawable/giratinaex"
             android:layout_weight="3"
@@ -32,9 +32,9 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/mbImg"
-            android:layout_width="100dp"
+            android:layout_width="@dimen/xxxxxxl"
             android:layout_height="wrap_content"
-            app:cornerRadius="8dp"
+            app:cornerRadius="@dimen/s"
             app:icon="@drawable/ic_add"
             android:text="@string/add_image_here"
             android:layout_weight="1" />
@@ -47,14 +47,14 @@
     <EditText
         android:id="@+id/etTitle"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/xxxxxl"
         android:importantForAutofill="no"
         android:inputType="text"
         android:maxLines="1"
         android:background="@drawable/edit_text_bg"
         android:hint="@string/title2"
-        android:padding="12dp"
-        android:layout_marginTop="8dp"
+        android:padding="@dimen/m"
+        android:layout_marginTop="@dimen/xs"
         style="@style/TextAppearance.Material3.TitleLarge"/>
     <TextView
         android:layout_width="match_parent"
@@ -64,14 +64,14 @@
     <EditText
         android:id="@+id/etPrice"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/xxxxxl"
         android:importantForAutofill="no"
         android:maxLines="1"
         android:background="@drawable/edit_text_bg"
         android:hint="@string/price2"
-        android:padding="12dp"
+        android:padding="@dimen/m"
         android:inputType="numberDecimal"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/xs"
         style="@style/TextAppearance.Material3.TitleLarge"/>
     <TextView
         android:layout_width="match_parent"
@@ -81,11 +81,11 @@
     <Spinner
         android:id="@+id/categorySpinner"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/xxxxxl"
         android:background="@drawable/spinner_bg"
-        android:padding="12dp"
+        android:padding="@dimen/m"
         android:textColor="@color/white"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/xs"
         android:popupBackground="@drawable/spinner_dropdown_bg"/>
     <TextView
         android:layout_width="match_parent"
@@ -95,11 +95,11 @@
     <Spinner
         android:id="@+id/raritySpinner"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/xxxxxl"
         android:background="@drawable/spinner_bg"
-        android:padding="12dp"
+        android:padding="@dimen/m"
         android:textColor="@color/white"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/xs"
         android:popupBackground="@drawable/spinner_dropdown_bg"/>
 
     <LinearLayout
@@ -107,7 +107,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/xxxxl"
         android:weightSum="3">
         <Space
             android:layout_width="wrap_content"
@@ -118,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add"
-            app:cornerRadius="10dp"
+            app:cornerRadius="@dimen/s"
             android:layout_weight="1"/>
         <Space
             android:layout_width="wrap_content"
@@ -130,23 +130,23 @@
         android:id="@+id/llBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:padding="10dp"
+        android:layout_marginTop="@dimen/xxxxl"
+        android:padding="@dimen/s"
         android:weightSum="2">
         <com.google.android.material.button.MaterialButton
             android:id="@+id/mbUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:cornerRadius="10dp"
-            android:layout_margin="10dp"
+            app:cornerRadius="@dimen/s"
+            android:layout_margin="@dimen/s"
             android:text="@string/update" />
         <com.google.android.material.button.MaterialButton
             android:id="@+id/mbDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cornerRadius="10dp"
-            android:layout_margin="10dp"
+            app:cornerRadius="@dimen/s"
+            android:layout_margin="@dimen/s"
             android:layout_weight="1"
             android:text="@string/delete" />
     </LinearLayout>

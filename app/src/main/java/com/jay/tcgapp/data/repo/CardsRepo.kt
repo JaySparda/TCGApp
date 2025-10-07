@@ -1,35 +1,38 @@
 package com.jay.tcgapp.data.repo
 
+import com.jay.tcgapp.data.db.CardsDao
 import com.jay.tcgapp.data.model.Card
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.map
 
-class CardsRepo private constructor() {
-    private val cards: MutableMap<Int, Card> = mutableMapOf()
-    private var counter = 0
+class CardsRepo(
+    private val dao: CardsDao
+) {
 
-    fun addCard(card: Card) {
-        counter++
-        val newCard = card.copy(id = counter)
-        cards[counter] = newCard
+    fun getCard() : Flow<List<Card>> {
+        return dao.getAllCards()
     }
 
-    fun getCardById(id: Int): Card? {
-        return cards[id]
+    suspend fun addCard(card: Card) {
+        dao.addCard(card)
     }
 
-    fun getAllCards(): List<Card> = cards.values.filter { !it.collected }
-    fun getAllCollectedCards(): List<Card> = cards.values.filter { it.collected }
-
-    fun deleteCard(id: Int) {
-        cards.remove(id)
+    suspend fun getCardById(id: Int): Card? {
+        return dao.getCardById(id)
     }
 
-    fun updateCard(card: Card) {
-        cards[card.id] = card
+    suspend fun deleteCard(id: Int) {
+        dao.delete(id)
     }
 
-    fun collectedCard(id: Int, collect: Boolean = true) {
-        val card = cards[id] ?: return
-        cards[id] = card.copy(collected = collect)
+    suspend fun updateCard(card: Card) {
+        dao.update(card)
+    }
+
+    suspend fun collectedCard(id: Int, collect: Boolean) {
+        val card = dao.getCardById(id) ?: return
+        dao.update(card.copy(collected = collect))
     }
 
     private fun filterSearch(list: List<Card>, searchText: String): List<Card> {
@@ -40,26 +43,19 @@ class CardsRepo private constructor() {
         }
     }
 
-    fun getFilteredCards(searchText: String): List<Card> {
-        var result = getAllCards()
-        result = filterSearch(result, searchText)
-        return result
+    fun getFilteredCard(searchText: String): Flow<List<Card>> {
+        return dao.getAllCards().map { cards ->
+            var result = cards.filter { !it.collected }
+            result= filterSearch(result, searchText)
+            result
+        }
     }
 
-    fun getFilteredCollectedCard(searchText: String): List<Card> {
-        var result = getAllCollectedCards()
-        result = filterSearch(result, searchText)
-        return result
-    }
-
-    companion object {
-        private var instance: CardsRepo? = null
-
-        fun getInstance(): CardsRepo {
-            if(instance == null){
-                instance = CardsRepo()
-            }
-            return instance!!
+    fun getFilteredCollectedCard(searchText: String): Flow<List<Card>> {
+        return dao.getAllCards().map { cards ->
+            var result = cards.filter { it.collected }
+            result = filterSearch(result, searchText)
+            result
         }
     }
 }
