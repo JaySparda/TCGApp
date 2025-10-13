@@ -10,10 +10,6 @@ class CardsRepo(
     private val dao: CardsDao
 ) {
 
-    fun getCard() : Flow<List<Card>> {
-        return dao.getAllCards()
-    }
-
     suspend fun addCard(card: Card) {
         dao.addCard(card)
     }
