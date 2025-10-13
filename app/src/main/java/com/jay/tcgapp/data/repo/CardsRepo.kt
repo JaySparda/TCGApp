@@ -3,7 +3,6 @@ package com.jay.tcgapp.data.repo
 import com.jay.tcgapp.data.db.CardsDao
 import com.jay.tcgapp.data.model.Card
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 
 class CardsRepo(
