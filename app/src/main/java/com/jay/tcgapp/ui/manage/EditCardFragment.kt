@@ -145,7 +145,8 @@ class EditCardFragment : Fragment() {
 
             mbDelete.setOnClickListener {
                 viewModel.deleteCard(args.cardId)
-                findNavController().popBackStack()
+                val action = EditCardFragmentDirections.actionEditFragmentToHomeFragment()
+                findNavController().navigate(action)
             }
         }
     }
