@@ -88,15 +88,20 @@ class AddCardFragment : Fragment() {
                 when {
                     title.isEmpty() -> {
                         showError("Title cannot be empty")
+                        return@setOnClickListener
                     }
                     imageUri.isEmpty() -> {
                         showError("Please select an image")
+                        return@setOnClickListener
                     }
                     priceText.isEmpty() -> {
                         showError("Price cannot be empty")
+                        return@setOnClickListener
                     }
                     !isValidPrice(priceText) -> {
                         showError("Invalid price")
+                        return@setOnClickListener
+
                     }
                 }
                 val price = priceText.toDouble()
