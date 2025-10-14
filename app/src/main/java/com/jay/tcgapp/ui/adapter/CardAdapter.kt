@@ -36,7 +36,7 @@ class CardAdapter(
 
         fun bind(card: Card) {
             binding.tvTitle.text = card.title
-            binding.tvPrice.text = card.price.toString()
+            binding.tvPrice.text = "RM: ${card.price}"
             binding.tvCategory.text = card.category.toString()
             binding.tvRarity.text = card.rarity.toString()
             binding.root.setOnClickListener { onCardClick(card) }
